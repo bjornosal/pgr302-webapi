@@ -25,6 +25,30 @@ namespace WarehouseApi.Controllers
             _context = context;
         }
 
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Item>> GetById(long id)
+        {
+            Item item = await _context.Items.FindAsync(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return item;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Item>> AddItem([FromBody] Item item)
+        {
+
+            _context.Items.Add(item);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<Item>> GetAllItems()
         {
@@ -32,5 +56,7 @@ namespace WarehouseApi.Controllers
 
             return allItems;
         }
+
+
     }
 }

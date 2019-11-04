@@ -13,26 +13,25 @@ namespace WarehouseApi.Controllers
     [ApiController]
     [EnableCors("AllowAnyOrigin")]
     [Route("api/v1/[controller]")]
-    public class OrdersController : ControllerBase
+    public class LocationsController : ControllerBase
     {
 
-        private readonly ILogger<OrdersController> _logger;
+        private readonly ILogger<LocationsController> _logger;
         private readonly WarehouseContext _context;
 
-        public OrdersController(ILogger<OrdersController> logger, WarehouseContext context)
+        public LocationsController(ILogger<LocationsController> logger, WarehouseContext context)
         {
             _logger = logger;
             _context = context;
         }
 
 
-
         [HttpGet]
-        public async Task<IEnumerable<Order>> GetAllOrders()
+        public async Task<IEnumerable<Location>> GetAllLocations()
         {
 
-            List<Order> allOrders = await _context.Orders.ToListAsync();
-            return allOrders;
+            List<Location> locations = await _context.Locations.ToListAsync();
+            return locations;
         }
     }
 }
