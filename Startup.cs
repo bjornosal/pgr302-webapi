@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.EntityFrameworkCore;
+using WarehouseApi.Models;
 
 namespace WarehouseApi
 {
@@ -26,6 +28,7 @@ namespace WarehouseApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<WarehouseContext>(options => options.UseSqlite("Data Source=Warehouse.db"));
             services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod().WithOrigins("http://localhost:5000/*")));
             services.AddControllers();
         }
