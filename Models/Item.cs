@@ -15,7 +15,8 @@ namespace WarehouseApi.Models
 
         public decimal Price { get; set; }
 
-        [ConcurrencyCheck]
+        //TODO: Make concurrent https://stackoverflow.com/questions/15669383/how-to-inc-dec-multi-user-safe-in-entity-framework-5/15669840#15669840
+        //[ConcurrencyCheck]
         public int Stock { get; set; }
 
     }

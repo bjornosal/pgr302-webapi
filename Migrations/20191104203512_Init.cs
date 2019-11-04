@@ -26,7 +26,7 @@ namespace WarehouseApi.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 150, nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     Stock = table.Column<int>(nullable: false),
                     LocationId = table.Column<long>(nullable: true)

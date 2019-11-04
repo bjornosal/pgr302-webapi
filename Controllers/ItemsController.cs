@@ -29,6 +29,11 @@ namespace WarehouseApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetById(long id)
         {
+            if (id < 0)
+            {
+                return NotFound();
+            }
+
             Item item = await _context.Items.FindAsync(id);
 
             if (item == null)
@@ -37,6 +42,30 @@ namespace WarehouseApi.Controllers
             }
 
             return item;
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateItem(long id, Item item)
+        {
+
+            if (id != item.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(item).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                //TODO: Check if exists, if it does, throw error
+                return NotFound();
+            }
+
+            return NoContent();
         }
 
         [HttpPost]
@@ -57,6 +86,19 @@ namespace WarehouseApi.Controllers
             return allItems;
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Item>> DeleteItem(long id)
+        {
+            var Item = await _context.Items.FindAsync(id);
+            if (Item == null)
+            {
+                return NotFound();
+            }
 
+            _context.Items.Remove(Item);
+            await _context.SaveChangesAsync();
+
+            return Item;
+        }
     }
 }

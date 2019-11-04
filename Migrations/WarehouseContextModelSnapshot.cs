@@ -26,7 +26,9 @@ namespace WarehouseApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(150);
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");

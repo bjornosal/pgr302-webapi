@@ -9,7 +9,7 @@ using WarehouseApi.Models;
 namespace WarehouseApi.Migrations
 {
     [DbContext(typeof(WarehouseContext))]
-    [Migration("20191104192851_Init")]
+    [Migration("20191104203512_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,7 +28,9 @@ namespace WarehouseApi.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(150);
 
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
