@@ -22,13 +22,13 @@ namespace WarehouseApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
                     b.Property<int?>("OrderId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("name")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("price")
+                    b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -68,14 +68,14 @@ namespace WarehouseApi.Migrations
             modelBuilder.Entity("WarehouseApi.Models.Item", b =>
                 {
                     b.HasOne("WarehouseApi.Models.Order", null)
-                        .WithMany("items")
+                        .WithMany("Items")
                         .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("WarehouseApi.Models.Order", b =>
                 {
                     b.HasOne("WarehouseApi.Models.User", null)
-                        .WithMany("orders")
+                        .WithMany("Orders")
                         .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618

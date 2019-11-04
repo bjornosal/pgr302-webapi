@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Cors;
+using WarehouseApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace WarehouseApi.Controllers
 {
@@ -15,17 +17,20 @@ namespace WarehouseApi.Controllers
     {
 
         private readonly ILogger<ItemsController> _logger;
+        private readonly WarehouseContext _context;
 
-        public ItemsController(ILogger<ItemsController> logger)
+        public ItemsController(ILogger<ItemsController> logger, WarehouseContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         [HttpGet]
-        public IEnumerable<String> GetAllItems()
+        public async Task<IEnumerable<Item>> GetAllItems()
         {
+            List<Item> allItems = await _context.Items.ToListAsync();
 
-            return new string[] { "ITEM1", "ITEM2" };
+            return allItems;
         }
     }
 }

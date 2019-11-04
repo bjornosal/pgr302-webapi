@@ -9,8 +9,8 @@ using WarehouseApi.Models;
 namespace WarehouseApi.Migrations
 {
     [DbContext(typeof(WarehouseContext))]
-    [Migration("20191104172736_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20191104185007_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,10 +24,13 @@ namespace WarehouseApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
                     b.Property<int?>("OrderId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("name")
+                    b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -67,14 +70,14 @@ namespace WarehouseApi.Migrations
             modelBuilder.Entity("WarehouseApi.Models.Item", b =>
                 {
                     b.HasOne("WarehouseApi.Models.Order", null)
-                        .WithMany("items")
+                        .WithMany("Items")
                         .HasForeignKey("OrderId");
                 });
 
             modelBuilder.Entity("WarehouseApi.Models.Order", b =>
                 {
                     b.HasOne("WarehouseApi.Models.User", null)
-                        .WithMany("orders")
+                        .WithMany("Orders")
                         .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618

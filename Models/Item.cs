@@ -8,10 +8,9 @@ namespace WarehouseApi.Models
         [Key]
         public int Id { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public decimal price { get; set; }
+        public decimal Price { get; set; }
 
-        public int stock { get; set; }
     }
 }

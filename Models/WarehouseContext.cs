@@ -7,6 +7,7 @@ namespace WarehouseApi.Models
 
         public WarehouseContext(DbContextOptions<WarehouseContext> options) : base(options) { }
 
+
         public DbSet<Item> Items { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
