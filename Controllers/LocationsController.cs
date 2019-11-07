@@ -86,7 +86,7 @@ namespace WarehouseApi.Controllers
             return allLocations;
         }
 
-         [HttpDelete("{id}")]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<Location>> DeleteLocation(long id)
         {
             var location = await _context.Locations.FindAsync(id);

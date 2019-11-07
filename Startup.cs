@@ -31,7 +31,7 @@ namespace WarehouseApi
         {
 
             services.AddDbContext<WarehouseContext>(options => options.UseSqlite("Data Source=Warehouse.db"));
-            services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod()));
+            services.AddCors(options => options.AddPolicy("AllowAnyOrigin", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyMethod().AllowAnyHeader()));
             services.AddControllers();
         }
 
