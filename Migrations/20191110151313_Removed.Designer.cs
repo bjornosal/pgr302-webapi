@@ -9,8 +9,8 @@ using WarehouseApi.Models;
 namespace WarehouseApi.Migrations
 {
     [DbContext(typeof(WarehouseContext))]
-    [Migration("20191104203512_Init")]
-    partial class Init
+    [Migration("20191110151313_Removed")]
+    partial class Removed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,7 +36,6 @@ namespace WarehouseApi.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Stock")
-                        .IsConcurrencyToken()
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -52,9 +51,6 @@ namespace WarehouseApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("MaxItems")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
@@ -65,8 +61,8 @@ namespace WarehouseApi.Migrations
 
             modelBuilder.Entity("WarehouseApi.Models.Item", b =>
                 {
-                    b.HasOne("WarehouseApi.Models.Location", null)
-                        .WithMany("Items")
+                    b.HasOne("WarehouseApi.Models.Location", "Location")
+                        .WithMany()
                         .HasForeignKey("LocationId");
                 });
 #pragma warning restore 612, 618

@@ -11,9 +11,6 @@ namespace WarehouseApi.Models
 
         public string Name { get; set; }
 
-        public int MaxItems { get; set; }
-
-        public List<Item> Items { get; set; }
 
     }
 }

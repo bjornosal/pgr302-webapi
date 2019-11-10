@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WarehouseApi.Models
 {
@@ -18,6 +19,7 @@ namespace WarehouseApi.Models
         //TODO: Make concurrent https://stackoverflow.com/questions/15669383/how-to-inc-dec-multi-user-safe-in-entity-framework-5/15669840#15669840
         //[ConcurrencyCheck]
         public int Stock { get; set; }
-
+        public long? LocationId { get; set; }
+        public Location Location { get; set; }
     }
 }
