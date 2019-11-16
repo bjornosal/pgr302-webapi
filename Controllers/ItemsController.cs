@@ -81,8 +81,7 @@ namespace WarehouseApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<Item>> GetAllItems()
         {
-            // List<Item> allItems = await _context.Items.ToListAsync();
-            List<Item> allItems =await _context.Items.Include(i => i.Location).ToListAsync();
+            List<Item> allItems = await _context.Items.Include(i => i.Location).ToListAsync();
 
             return allItems;
         }
