@@ -61,7 +61,6 @@ namespace WarehouseApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                //TODO: Do check for if it exists in DB.
                 return NotFound();
             }
 
@@ -100,6 +99,5 @@ namespace WarehouseApi.Controllers
 
             return location;
         }
-        //TODO: Add Patch?
     }
 }

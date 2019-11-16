@@ -61,7 +61,6 @@ namespace WarehouseApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                //TODO: Check if exists, if it does, throw error
                 return NotFound();
             }
 
